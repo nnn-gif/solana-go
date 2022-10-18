@@ -15,12 +15,9 @@
 package serum
 
 import (
-	"bytes"
 	"context"
-	"encoding/json"
 	"fmt"
 
-	rice "github.com/GeertJohan/go.rice"
 	bin "github.com/streamingfast/binary"
 	"github.com/streamingfast/solana-go"
 	"github.com/streamingfast/solana-go/rpc"
@@ -31,20 +28,20 @@ import (
 //go:generate rice embed-go
 
 // TODO: hit the chain and
-func KnownMarket() ([]*MarketMeta, error) {
-	box := rice.MustFindBox("data").MustBytes("markets.json")
-	if box == nil {
-		return nil, fmt.Errorf("unable to retrieve known markets")
-	}
+// func KnownMarket() ([]*MarketMeta, error) {
+// 	box := rice.MustFindBox("data").MustBytes("markets.json")
+// 	if box == nil {
+// 		return nil, fmt.Errorf("unable to retrieve known markets")
+// 	}
 
-	dec := json.NewDecoder(bytes.NewReader(box))
-	var markets []*MarketMeta
-	err := dec.Decode(&markets)
-	if err != nil {
-		return nil, fmt.Errorf("unable to decode known markets: %w", err)
-	}
-	return markets, nil
-}
+// 	dec := json.NewDecoder(bytes.NewReader(box))
+// 	var markets []*MarketMeta
+// 	err := dec.Decode(&markets)
+// 	if err != nil {
+// 		return nil, fmt.Errorf("unable to decode known markets: %w", err)
+// 	}
+// 	return markets, nil
+// }
 
 func FetchOpenOrders(ctx context.Context, rpcCli *rpc.Client, openOrdersAddr solana.PublicKey) (*OpenOrdersMeta, error) {
 	acctInfo, err := rpcCli.GetAccountInfo(openOrdersAddr)

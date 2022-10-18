@@ -4,7 +4,6 @@ go 1.15
 
 require (
 	filippo.io/edwards25519 v1.0.0-rc.1
-	github.com/GeertJohan/go.rice v1.0.0
 	github.com/fatih/color v1.13.0
 	github.com/fsnotify/fsnotify v1.5.1 // indirect
 	github.com/golang/protobuf v1.5.2 // indirect

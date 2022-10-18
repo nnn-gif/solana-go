@@ -25,8 +25,6 @@ import (
 	"github.com/streamingfast/solana-go/rpc/ws"
 )
 
-//go:generate rice embed-go
-
 func FetchMints(rpcCli *rpc.Client) (out []*Mint, err error) {
 	resp, err := rpcCli.GetProgramAccounts(
 		PROGRAM_ID,
